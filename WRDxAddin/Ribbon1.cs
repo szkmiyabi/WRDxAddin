@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,9 +15,24 @@ namespace WRDxAddin
         private static InputForm _inpfrmObj;
         private static ComboEditForm _cmbefrmObj;
 
+        //設定保存データ
+        private string WriteUtilStorage;
+
+        //コンストラクタ
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
+            //設定保存先
+            init_save_storage();
+        }
 
+        //設定保存先のイニシャライザ
+        private void init_save_storage()
+        {
+            string savepath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\WRDxAddin\";
+            if (!System.IO.Directory.Exists(savepath))
+                System.IO.Directory.CreateDirectory(savepath);
+
+            WriteUtilStorage = savepath + "WriteUtilData.txt";
         }
 
         //InputFormインスタンスの取得
@@ -105,6 +121,25 @@ namespace WRDxAddin
         private void writeCommentComboSaveButton_Click(object sender, RibbonControlEventArgs e)
         {
             do_save_val_comment();
+        }
+
+        private void saveLocalDataButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            MessageBox.Show(System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            int cnt = writeCommentCombo.Items.Count;
+            string body = "";
+            for (int i = 0; i < cnt; i++)
+            {
+                string val = writeCommentCombo.Items[i].Label;
+                body += val;
+                if (i != (cnt - 1)) body += "\r\n";
+            }
+
+            Encoding enc = Encoding.GetEncoding("Shift_JIS");
+            StreamWriter sw = new StreamWriter(WriteUtilStorage, false, enc);
+            sw.WriteLine(body);
+            sw.Close();
+            MessageBox.Show("保存できました!");
         }
     }
 }

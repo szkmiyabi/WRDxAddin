@@ -37,14 +37,15 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
-            this.box2 = this.Factory.CreateRibbonBox();
-            this.box3 = this.Factory.CreateRibbonBox();
             this.writeCommentCombo = this.Factory.CreateRibbonComboBox();
             this.writeCommentInputButton = this.Factory.CreateRibbonButton();
+            this.saveLocalDataButton = this.Factory.CreateRibbonButton();
+            this.box2 = this.Factory.CreateRibbonBox();
             this.writeCommentAddButton = this.Factory.CreateRibbonButton();
             this.writeCommentAddFromFormButton = this.Factory.CreateRibbonButton();
             this.writeCommentAddFromFileButton = this.Factory.CreateRibbonButton();
             this.addCommentPreClearCheck = this.Factory.CreateRibbonCheckBox();
+            this.box3 = this.Factory.CreateRibbonBox();
             this.delCommentSingleButton = this.Factory.CreateRibbonButton();
             this.delCommentAllButton = this.Factory.CreateRibbonButton();
             this.doEditComboButton = this.Factory.CreateRibbonButton();
@@ -74,7 +75,27 @@
             // 
             this.box1.Items.Add(this.writeCommentCombo);
             this.box1.Items.Add(this.writeCommentInputButton);
+            this.box1.Items.Add(this.saveLocalDataButton);
             this.box1.Name = "box1";
+            // 
+            // writeCommentCombo
+            // 
+            this.writeCommentCombo.Label = "comboBox1";
+            this.writeCommentCombo.Name = "writeCommentCombo";
+            this.writeCommentCombo.ShowLabel = false;
+            this.writeCommentCombo.Text = null;
+            // 
+            // writeCommentInputButton
+            // 
+            this.writeCommentInputButton.Label = "語句挿入";
+            this.writeCommentInputButton.Name = "writeCommentInputButton";
+            this.writeCommentInputButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.writeCommentInputButton_Click);
+            // 
+            // saveLocalDataButton
+            // 
+            this.saveLocalDataButton.Label = "ローカル保存";
+            this.saveLocalDataButton.Name = "saveLocalDataButton";
+            this.saveLocalDataButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveLocalDataButton_Click);
             // 
             // box2
             // 
@@ -83,26 +104,6 @@
             this.box2.Items.Add(this.writeCommentAddFromFileButton);
             this.box2.Items.Add(this.addCommentPreClearCheck);
             this.box2.Name = "box2";
-            // 
-            // box3
-            // 
-            this.box3.Items.Add(this.delCommentSingleButton);
-            this.box3.Items.Add(this.delCommentAllButton);
-            this.box3.Items.Add(this.doEditComboButton);
-            this.box3.Items.Add(this.writeCommentComboSaveButton);
-            this.box3.Name = "box3";
-            // 
-            // writeCommentCombo
-            // 
-            this.writeCommentCombo.Label = "comboBox1";
-            this.writeCommentCombo.Name = "writeCommentCombo";
-            this.writeCommentCombo.ShowLabel = false;
-            // 
-            // writeCommentInputButton
-            // 
-            this.writeCommentInputButton.Label = "語句挿入";
-            this.writeCommentInputButton.Name = "writeCommentInputButton";
-            this.writeCommentInputButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.writeCommentInputButton_Click);
             // 
             // writeCommentAddButton
             // 
@@ -126,6 +127,14 @@
             // 
             this.addCommentPreClearCheck.Label = "全削除追加";
             this.addCommentPreClearCheck.Name = "addCommentPreClearCheck";
+            // 
+            // box3
+            // 
+            this.box3.Items.Add(this.delCommentSingleButton);
+            this.box3.Items.Add(this.delCommentAllButton);
+            this.box3.Items.Add(this.doEditComboButton);
+            this.box3.Items.Add(this.writeCommentComboSaveButton);
+            this.box3.Name = "box3";
             // 
             // delCommentSingleButton
             // 
@@ -188,6 +197,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton delCommentAllButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton doEditComboButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton writeCommentComboSaveButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton saveLocalDataButton;
     }
 
     partial class ThisRibbonCollection
