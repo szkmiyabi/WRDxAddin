@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,21 +19,21 @@ namespace WRDxAddin
         //設定保存データ
         private string WriteUtilStorage;
 
+        //日付時刻設定
+        private CultureInfo culture;
+
         //コンストラクタ
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
             //設定保存先
             init_save_storage();
-        }
 
-        //設定保存先のイニシャライザ
-        private void init_save_storage()
-        {
-            string savepath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\WRDxAddin\";
-            if (!System.IO.Directory.Exists(savepath))
-                System.IO.Directory.CreateDirectory(savepath);
+            //日付時刻設定
+            culture = new CultureInfo("ja-jp", true);
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
 
-            WriteUtilStorage = savepath + "WriteUtilData.txt";
+            init_writeCommentCombo();
+            init_paddingCombo();
         }
 
         //InputFormインスタンスの取得
@@ -59,20 +60,6 @@ namespace WRDxAddin
                 }
                 return _cmbefrmObj;
             }
-        }
-
-        //TXTファイル保存先を取得
-        private string _get_txt_save_path()
-        {
-            string path = "";
-            SaveFileDialog fda = new SaveFileDialog();
-            fda.Filter = "Textファイル(*.txt)|*.txt";
-            fda.Title = "名前を付けて保存";
-            if (fda.ShowDialog() == DialogResult.OK)
-            {
-                path = fda.FileName;
-            }
-            return path;
         }
 
         //コンボで選択した文字列を挿入する
@@ -123,23 +110,33 @@ namespace WRDxAddin
             do_save_val_comment();
         }
 
-        private void saveLocalDataButton_Click(object sender, RibbonControlEventArgs e)
+        //ドロップダウンから記号を挿入
+        private void writeMarkInputButton_Click(object sender, RibbonControlEventArgs e)
         {
-            MessageBox.Show(System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-            int cnt = writeCommentCombo.Items.Count;
-            string body = "";
-            for (int i = 0; i < cnt; i++)
-            {
-                string val = writeCommentCombo.Items[i].Label;
-                body += val;
-                if (i != (cnt - 1)) body += "\r\n";
-            }
+            write_mark();
+        }
 
-            Encoding enc = Encoding.GetEncoding("Shift_JIS");
-            StreamWriter sw = new StreamWriter(WriteUtilStorage, false, enc);
-            sw.WriteLine(body);
-            sw.Close();
-            MessageBox.Show("保存できました!");
+        //改行挿入
+        private void writeEnterButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            write_enter();
+        }
+
+        //余白設定
+        private void paddingButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            page_padding();
+        }
+
+        //金額を10分の1にする
+        private void divideBy10Button_Click(object sender, RibbonControlEventArgs e)
+        {
+            divide_by_10();
+        }
+
+        private void textDuplicateButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            duplicate_selection();
         }
     }
 }

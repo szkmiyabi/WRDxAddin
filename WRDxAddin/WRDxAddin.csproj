@@ -156,6 +156,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Background.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComboEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,9 +171,13 @@
     <Compile Include="InputForm.Designer.cs">
       <DependentUpon>InputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PageUtil.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TextUtil.cs" />
     <Compile Include="WriteUtil.cs">
       <SubType>Component</SubType>
     </Compile>
