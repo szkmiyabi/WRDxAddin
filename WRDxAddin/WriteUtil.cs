@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 namespace WRDxAddin
 {
@@ -45,13 +46,10 @@ namespace WRDxAddin
         private void write_comment()
         {
             var sa = getSelection();
-            if (write_enabled())
-            {
-                string src = writeCommentCombo.Text;
-                src = src.Replace(br_sp, "\r\n");
-                src = decode_date_tag(src);
-                sa.TypeText(src);
-            }
+            string src = writeCommentCombo.Text;
+            src = src.Replace(br_sp, "\r\n");
+            src = decode_date_tag(src);
+            sa.TypeText(src);
         }
 
         //ドロップダウンに値を追加する
@@ -190,19 +188,18 @@ namespace WRDxAddin
         {
             var sa = getSelection();
             string src = writeMarkCombo.Text;
-            if (write_enabled())
+
+            if (writeMarkHamCheck.Checked)
             {
-                if (writeMarkHamCheck.Checked)
-                {
-                    string body = sa.Text;
-                    body = mark_ham(src, body);
-                    sa.TypeText(body);
-                }
-                else
-                {
-                    sa.TypeText(src);
-                }
+                string body = sa.Text;
+                body = mark_ham(src, body);
+                sa.TypeText(body);
             }
+            else
+            {
+                sa.TypeText(src);
+            }
+
         }
 
         //改行挿入
@@ -263,6 +260,39 @@ namespace WRDxAddin
             var old_text = sa.Text;
             sa.TypeText(old_text);
             sa.TypeText(old_text);
+        }
+
+        //透明枠を挿入
+        private void insert_textbox()
+        {
+            var doc = getDoc();
+            float[] size = { 300, 200 };
+            var textBox = doc.Shapes.AddTextbox(MsoTextOrientation.msoTextOrientationHorizontal, getCursorLeft(), getCursorTop(), size[0], size[1]);
+            textBox.Fill.Visible = MsoTriState.msoFalse;
+            textBox.Line.Visible = MsoTriState.msoFalse;
+            textBox.Select();
+        }
+
+        //図複製
+        private void duplicate_shape()
+        {
+            var sa = getSelection();
+            var shape = sa.ShapeRange[1].Duplicate();
+            shape.Select();
+            shape.IncrementLeft(5);
+            shape.IncrementTop(5);
+        }
+
+        //角丸赤枠を挿入
+        private void insert_rounded_rect()
+        {
+            var doc = getDoc();
+            float[] size = { 120, 90 };
+            var textBox = doc.Shapes.AddShape(5, getCursorLeft(), getCursorTop(), size[0], size[1]);
+            textBox.Fill.Visible = MsoTriState.msoFalse;
+            textBox.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
+            textBox.Line.Weight = 3;
+            textBox.Select();
         }
     }
 }

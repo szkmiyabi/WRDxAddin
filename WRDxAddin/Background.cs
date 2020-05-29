@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Tools.Ribbon;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 namespace WRDxAddin
 {
@@ -51,6 +52,42 @@ namespace WRDxAddin
             SaveFileDialog fda = new SaveFileDialog();
             fda.Filter = "Textファイル(*.txt)|*.txt";
             fda.Title = "名前を付けて保存";
+            fda.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (fda.ShowDialog() == DialogResult.OK)
+            {
+                path = fda.FileName;
+            }
+            return path;
+        }
+
+        //DOCXファイル保存先を取得
+        private string _get_docx_save_path()
+        {
+            string path = "";
+            SaveFileDialog fda = new SaveFileDialog();
+            fda.Filter = "Wordファイル(*.docx)|*.docx";
+            fda.Title = "名前を付けて保存";
+            fda.FileName = getDoc().Name;
+            fda.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (fda.ShowDialog() == DialogResult.OK)
+            {
+                path = fda.FileName;
+            }
+            return path;
+        }
+
+        //PDFファイル保存先を取得
+        private string _get_pdf_save_path()
+        {
+            string path = "";
+            SaveFileDialog fda = new SaveFileDialog();
+            fda.Filter = "Wordファイル(*.pdf)|*.pdf";
+            fda.Title = "名前を付けて保存";
+            string crName = getDoc().Name;
+            crName = crName.Replace(".docx",".pdf");
+            crName = crName.Replace(".doc", ".pdf");
+            fda.FileName = crName;
+            fda.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if (fda.ShowDialog() == DialogResult.OK)
             {
                 path = fda.FileName;
@@ -68,6 +105,18 @@ namespace WRDxAddin
         private Word.Document getDoc()
         {
             return Globals.ThisAddIn.Application.ActiveDocument;
+        }
+
+        //カーソル横座標取得
+        private float getCursorLeft()
+        {
+            return (float)getSelection().Information[Word.WdInformation.wdHorizontalPositionRelativeToPage];
+        }
+
+        //カーソル縦座標取得
+        private float getCursorTop()
+        {
+            return (float)getSelection().Information[Word.WdInformation.wdVerticalPositionRelativeToPage];
         }
 
         //挿入可能場所か判定
@@ -88,6 +137,14 @@ namespace WRDxAddin
             string m = String.Format("{0, 2}", (int)ymd.Month);
             string d = "01";
             return DateTime.Parse(y + "/" + m + "/" + d);
+        }
+
+        //Word用RGBスカラーを取得
+        private int getWordRGB(int r, int g, int b)
+        {
+            Color c = Color.FromArgb(r, g, b);
+            var cint = (Word.WdColor)(c.R + 0x100 * c.G + 0x10000 * c.B);
+            return (int)cint;
         }
 
 

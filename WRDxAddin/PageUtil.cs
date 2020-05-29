@@ -37,5 +37,25 @@ namespace WRDxAddin
             if (paddingTypeRight.Checked) doc.PageSetup.RightMargin = size;
         }
 
+        //別名保存する
+        private void save_as_desktop()
+        {
+            string path = _get_docx_save_path();
+            object filename = path;
+            var doc = getDoc();
+            doc.SaveAs2(ref filename);
+        }
+
+        //PDF保存する
+        private void save_as_PDF_desktop()
+        {
+            string path = _get_pdf_save_path();
+            object filename = path;
+            var doc = getDoc();
+            object format = Word.WdSaveFormat.wdFormatPDF;
+            doc.SaveAs2(ref filename, ref format);
+        }
+
+
     }
 }

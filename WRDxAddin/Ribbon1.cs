@@ -134,9 +134,40 @@ namespace WRDxAddin
             divide_by_10();
         }
 
+        //文字複製
         private void textDuplicateButton_Click(object sender, RibbonControlEventArgs e)
         {
             duplicate_selection();
+        }
+
+        //別名保存
+        private void saveAsDesktopButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            save_as_desktop();
+        }
+
+        //PDF保存する
+        private void saveAsPDFButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            save_as_PDF_desktop();
+        }
+
+        //透明枠を挿入
+        private void insertOpacityTextBoxButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_textbox();
+        }
+
+        //図複製
+        private void shapeDuplicateButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            duplicate_shape();
+        }
+
+        //角丸赤枠
+        private void insertNoFillRoundedRectButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_rounded_rect();
         }
     }
 }

@@ -53,6 +53,7 @@
             this.writeCommentCombo = this.Factory.CreateRibbonComboBox();
             this.writeCommentInputButton = this.Factory.CreateRibbonButton();
             this.writeEnterButton = this.Factory.CreateRibbonButton();
+            this.textDuplicateButton = this.Factory.CreateRibbonButton();
             this.box2 = this.Factory.CreateRibbonBox();
             this.writeCommentAddButton = this.Factory.CreateRibbonButton();
             this.writeCommentAddFromFormButton = this.Factory.CreateRibbonButton();
@@ -63,31 +64,39 @@
             this.delCommentAllButton = this.Factory.CreateRibbonButton();
             this.doEditComboButton = this.Factory.CreateRibbonButton();
             this.writeCommentComboSaveButton = this.Factory.CreateRibbonButton();
-            this.box4 = this.Factory.CreateRibbonBox();
             this.writeMarkCombo = this.Factory.CreateRibbonComboBox();
             this.writeMarkInputButton = this.Factory.CreateRibbonButton();
             this.writeMarkHamCheck = this.Factory.CreateRibbonCheckBox();
+            this.box6 = this.Factory.CreateRibbonBox();
+            this.divideBy10Button = this.Factory.CreateRibbonButton();
+            this.insertOpacityTextBoxButton = this.Factory.CreateRibbonButton();
+            this.shapeDuplicateButton = this.Factory.CreateRibbonButton();
+            this.box8 = this.Factory.CreateRibbonBox();
+            this.insertNoFillRoundedRectButton = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
-            this.paddingCombo = this.Factory.CreateRibbonComboBox();
             this.box5 = this.Factory.CreateRibbonBox();
+            this.paddingCombo = this.Factory.CreateRibbonComboBox();
             this.paddingButton = this.Factory.CreateRibbonButton();
             this.paddingTypeSplitButton = this.Factory.CreateRibbonSplitButton();
             this.paddingTypeTop = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeBottom = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeLeft = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeRight = this.Factory.CreateRibbonToggleButton();
-            this.box6 = this.Factory.CreateRibbonBox();
-            this.divideBy10Button = this.Factory.CreateRibbonButton();
-            this.textDuplicateButton = this.Factory.CreateRibbonButton();
+            this.box7 = this.Factory.CreateRibbonBox();
+            this.saveAsDesktopButton = this.Factory.CreateRibbonButton();
+            this.saveAsPDFButton = this.Factory.CreateRibbonButton();
+            this.box4 = this.Factory.CreateRibbonBox();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.box1.SuspendLayout();
             this.box2.SuspendLayout();
             this.box3.SuspendLayout();
-            this.box4.SuspendLayout();
+            this.box6.SuspendLayout();
+            this.box8.SuspendLayout();
             this.group2.SuspendLayout();
             this.box5.SuspendLayout();
-            this.box6.SuspendLayout();
+            this.box7.SuspendLayout();
+            this.box4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -102,8 +111,9 @@
             this.group1.Items.Add(this.box1);
             this.group1.Items.Add(this.box2);
             this.group1.Items.Add(this.box3);
-            this.group1.Items.Add(this.box4);
             this.group1.Items.Add(this.box6);
+            this.group1.Items.Add(this.box8);
+            this.group1.Items.Add(this.box4);
             this.group1.Label = "文章編集";
             this.group1.Name = "group1";
             // 
@@ -111,8 +121,6 @@
             // 
             this.box1.Items.Add(this.writeCommentCombo);
             this.box1.Items.Add(this.writeCommentInputButton);
-            this.box1.Items.Add(this.writeEnterButton);
-            this.box1.Items.Add(this.textDuplicateButton);
             this.box1.Name = "box1";
             // 
             // writeCommentCombo
@@ -134,6 +142,12 @@
             this.writeEnterButton.Label = "改行";
             this.writeEnterButton.Name = "writeEnterButton";
             this.writeEnterButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.writeEnterButton_Click);
+            // 
+            // textDuplicateButton
+            // 
+            this.textDuplicateButton.Label = "文字複製";
+            this.textDuplicateButton.Name = "textDuplicateButton";
+            this.textDuplicateButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textDuplicateButton_Click);
             // 
             // box2
             // 
@@ -198,13 +212,6 @@
             this.writeCommentComboSaveButton.Name = "writeCommentComboSaveButton";
             this.writeCommentComboSaveButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.writeCommentComboSaveButton_Click);
             // 
-            // box4
-            // 
-            this.box4.Items.Add(this.writeMarkCombo);
-            this.box4.Items.Add(this.writeMarkInputButton);
-            this.box4.Items.Add(this.writeMarkHamCheck);
-            this.box4.Name = "box4";
-            // 
             // writeMarkCombo
             // 
             ribbonDropDownItemImpl1.Label = "※";
@@ -250,18 +257,50 @@
             this.writeMarkHamCheck.Label = "挟込";
             this.writeMarkHamCheck.Name = "writeMarkHamCheck";
             // 
+            // box6
+            // 
+            this.box6.Items.Add(this.writeMarkCombo);
+            this.box6.Items.Add(this.writeMarkInputButton);
+            this.box6.Items.Add(this.writeMarkHamCheck);
+            this.box6.Name = "box6";
+            // 
+            // divideBy10Button
+            // 
+            this.divideBy10Button.Label = "金額10%";
+            this.divideBy10Button.Name = "divideBy10Button";
+            this.divideBy10Button.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.divideBy10Button_Click);
+            // 
+            // insertOpacityTextBoxButton
+            // 
+            this.insertOpacityTextBoxButton.Label = "透明枠";
+            this.insertOpacityTextBoxButton.Name = "insertOpacityTextBoxButton";
+            this.insertOpacityTextBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertOpacityTextBoxButton_Click);
+            // 
+            // shapeDuplicateButton
+            // 
+            this.shapeDuplicateButton.Label = "図複製";
+            this.shapeDuplicateButton.Name = "shapeDuplicateButton";
+            this.shapeDuplicateButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.shapeDuplicateButton_Click);
+            // 
+            // box8
+            // 
+            this.box8.Items.Add(this.divideBy10Button);
+            this.box8.Items.Add(this.writeEnterButton);
+            this.box8.Items.Add(this.textDuplicateButton);
+            this.box8.Name = "box8";
+            // 
+            // insertNoFillRoundedRectButton
+            // 
+            this.insertNoFillRoundedRectButton.Label = "角丸赤枠";
+            this.insertNoFillRoundedRectButton.Name = "insertNoFillRoundedRectButton";
+            this.insertNoFillRoundedRectButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertNoFillRoundedRectButton_Click);
+            // 
             // group2
             // 
             this.group2.Items.Add(this.box5);
+            this.group2.Items.Add(this.box7);
             this.group2.Label = "ページ設定";
             this.group2.Name = "group2";
-            // 
-            // paddingCombo
-            // 
-            this.paddingCombo.Label = "comboBox1";
-            this.paddingCombo.Name = "paddingCombo";
-            this.paddingCombo.ShowLabel = false;
-            this.paddingCombo.SizeString = "A";
             // 
             // box5
             // 
@@ -269,6 +308,14 @@
             this.box5.Items.Add(this.paddingButton);
             this.box5.Items.Add(this.paddingTypeSplitButton);
             this.box5.Name = "box5";
+            // 
+            // paddingCombo
+            // 
+            this.paddingCombo.Label = "comboBox1";
+            this.paddingCombo.Name = "paddingCombo";
+            this.paddingCombo.ShowLabel = false;
+            this.paddingCombo.SizeString = "A";
+            this.paddingCombo.Text = null;
             // 
             // paddingButton
             // 
@@ -315,22 +362,30 @@
             this.paddingTypeRight.Name = "paddingTypeRight";
             this.paddingTypeRight.ShowImage = true;
             // 
-            // box6
+            // box7
             // 
-            this.box6.Items.Add(this.divideBy10Button);
-            this.box6.Name = "box6";
+            this.box7.Items.Add(this.saveAsDesktopButton);
+            this.box7.Items.Add(this.saveAsPDFButton);
+            this.box7.Name = "box7";
             // 
-            // divideBy10Button
+            // saveAsDesktopButton
             // 
-            this.divideBy10Button.Label = "金額10%";
-            this.divideBy10Button.Name = "divideBy10Button";
-            this.divideBy10Button.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.divideBy10Button_Click);
+            this.saveAsDesktopButton.Label = "別名保存";
+            this.saveAsDesktopButton.Name = "saveAsDesktopButton";
+            this.saveAsDesktopButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveAsDesktopButton_Click);
             // 
-            // textDuplicateButton
+            // saveAsPDFButton
             // 
-            this.textDuplicateButton.Label = "複製";
-            this.textDuplicateButton.Name = "textDuplicateButton";
-            this.textDuplicateButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textDuplicateButton_Click);
+            this.saveAsPDFButton.Label = "PDF保存";
+            this.saveAsPDFButton.Name = "saveAsPDFButton";
+            this.saveAsPDFButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveAsPDFButton_Click);
+            // 
+            // box4
+            // 
+            this.box4.Items.Add(this.insertOpacityTextBoxButton);
+            this.box4.Items.Add(this.insertNoFillRoundedRectButton);
+            this.box4.Items.Add(this.shapeDuplicateButton);
+            this.box4.Name = "box4";
             // 
             // Ribbon1
             // 
@@ -348,14 +403,18 @@
             this.box2.PerformLayout();
             this.box3.ResumeLayout(false);
             this.box3.PerformLayout();
-            this.box4.ResumeLayout(false);
-            this.box4.PerformLayout();
+            this.box6.ResumeLayout(false);
+            this.box6.PerformLayout();
+            this.box8.ResumeLayout(false);
+            this.box8.PerformLayout();
             this.group2.ResumeLayout(false);
             this.group2.PerformLayout();
             this.box5.ResumeLayout(false);
             this.box5.PerformLayout();
-            this.box6.ResumeLayout(false);
-            this.box6.PerformLayout();
+            this.box7.ResumeLayout(false);
+            this.box7.PerformLayout();
+            this.box4.ResumeLayout(false);
+            this.box4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -378,7 +437,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton doEditComboButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton writeCommentComboSaveButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonComboBox writeMarkCombo;
-        internal Microsoft.Office.Tools.Ribbon.RibbonBox box4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton writeMarkInputButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox writeMarkHamCheck;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton writeEnterButton;
@@ -394,6 +452,14 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonBox box6;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton divideBy10Button;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton textDuplicateButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton saveAsDesktopButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box7;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton saveAsPDFButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertOpacityTextBoxButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton shapeDuplicateButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box8;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertNoFillRoundedRectButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonBox box4;
     }
 
     partial class ThisRibbonCollection
