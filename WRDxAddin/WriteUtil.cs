@@ -13,6 +13,7 @@ using Microsoft.Office.Tools.Ribbon;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using Microsoft.Office.Interop.Word;
 
 namespace WRDxAddin
 {
@@ -176,7 +177,7 @@ namespace WRDxAddin
         //記号で前後を挟む
         private string mark_ham(string mark, string body)
         {
-            Regex pt = new Regex(@"(\[|【|「|『)( )(\]|】|」|』)", RegexOptions.Compiled);
+            Regex pt = new Regex(@"(\[|【|「|『|""|\')( )(\]|】|」|』|""|\')", RegexOptions.Compiled);
             if (!pt.IsMatch(mark))
                 return body;
             Match mt = pt.Match(mark);
@@ -207,6 +208,14 @@ namespace WRDxAddin
         {
             var sa = getSelection();
             sa.TypeText("\r\n");
+        }
+
+        //改ページ
+        private void page_break()
+        {
+            var sa = getSelection();
+            sa.InsertBreak(WdBreakType.wdPageBreak);
+            
         }
 
         //コンマ除去
@@ -266,10 +275,12 @@ namespace WRDxAddin
         private void insert_textbox()
         {
             var doc = getDoc();
-            float[] size = { 300, 200 };
+            float[] size = { 200, 100 };
             var textBox = doc.Shapes.AddTextbox(MsoTextOrientation.msoTextOrientationHorizontal, getCursorLeft(), getCursorTop(), size[0], size[1]);
             textBox.Fill.Visible = MsoTriState.msoFalse;
             textBox.Line.Visible = MsoTriState.msoFalse;
+            textBox.TextFrame.TextRange.Font.Size = 9;
+            textBox.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
             textBox.Select();
         }
 
@@ -289,10 +300,33 @@ namespace WRDxAddin
             var doc = getDoc();
             float[] size = { 120, 90 };
             var textBox = doc.Shapes.AddShape(5, getCursorLeft(), getCursorTop(), size[0], size[1]);
+            // border設定
             textBox.Fill.Visible = MsoTriState.msoFalse;
             textBox.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
+            textBox.Line.Transparency = 0.2F;
             textBox.Line.Weight = 3;
+            // shadow設定
+            textBox.Shadow.Visible = MsoTriState.msoTrue;
+            textBox.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
+            textBox.Shadow.OffsetX = 1;
+            textBox.Shadow.OffsetY = 1;
+            textBox.Shadow.Transparency = 0.5F;
             textBox.Select();
+        }
+
+        //吹出を挿入
+        private void insert_callout()
+        {
+            var doc = getDoc();
+            float[] size = { 120, 90 };
+            var rectCallout = doc.Shapes.AddShape(105, getCursorLeft(), getCursorTop(), size[0], size[1]);
+            rectCallout.Fill.ForeColor.RGB = getWordRGB(255, 255, 255);
+            rectCallout.TextFrame.TextRange.Font.ColorIndex = WdColorIndex.wdBlack;
+            rectCallout.TextFrame.TextRange.Font.Size = 9;
+            rectCallout.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
+            rectCallout.Line.ForeColor.RGB = getWordRGB(255, 192, 0);
+            rectCallout.Line.Weight = 1.5F;
+            rectCallout.Select();
         }
     }
 }

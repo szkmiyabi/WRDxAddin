@@ -164,10 +164,22 @@ namespace WRDxAddin
             duplicate_shape();
         }
 
-        //角丸赤枠
+        //赤枠
         private void insertNoFillRoundedRectButton_Click(object sender, RibbonControlEventArgs e)
         {
             insert_rounded_rect();
+        }
+
+        //改ページ
+        private void insertPageBreakButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            page_break();
+        }
+
+        //吹出
+        private void insertRectangleCalloutButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_callout();
         }
     }
 }
