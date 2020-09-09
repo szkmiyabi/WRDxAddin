@@ -76,6 +76,7 @@
             this.box4 = this.Factory.CreateRibbonBox();
             this.insertOpacityTextBoxButton = this.Factory.CreateRibbonButton();
             this.insertNoFillRoundedRectButton = this.Factory.CreateRibbonButton();
+            this.insertRectangleCalloutButton = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.box5 = this.Factory.CreateRibbonBox();
             this.paddingCombo = this.Factory.CreateRibbonComboBox();
@@ -88,7 +89,6 @@
             this.box7 = this.Factory.CreateRibbonBox();
             this.saveAsDesktopButton = this.Factory.CreateRibbonButton();
             this.saveAsPDFButton = this.Factory.CreateRibbonButton();
-            this.insertRectangleCalloutButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.box1.SuspendLayout();
@@ -310,6 +310,12 @@
             this.insertNoFillRoundedRectButton.Name = "insertNoFillRoundedRectButton";
             this.insertNoFillRoundedRectButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertNoFillRoundedRectButton_Click);
             // 
+            // insertRectangleCalloutButton
+            // 
+            this.insertRectangleCalloutButton.Label = "吹出";
+            this.insertRectangleCalloutButton.Name = "insertRectangleCalloutButton";
+            this.insertRectangleCalloutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertRectangleCalloutButton_Click);
+            // 
             // group2
             // 
             this.group2.Items.Add(this.box5);
@@ -394,12 +400,6 @@
             this.saveAsPDFButton.Label = "PDF保存";
             this.saveAsPDFButton.Name = "saveAsPDFButton";
             this.saveAsPDFButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveAsPDFButton_Click);
-            // 
-            // insertRectangleCalloutButton
-            // 
-            this.insertRectangleCalloutButton.Label = "吹出";
-            this.insertRectangleCalloutButton.Name = "insertRectangleCalloutButton";
-            this.insertRectangleCalloutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertRectangleCalloutButton_Click);
             // 
             // Ribbon1
             // 

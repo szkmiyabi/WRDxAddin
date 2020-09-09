@@ -21,6 +21,7 @@ namespace WRDxAddin
     {
         private string br_sp = "<bkmk:br>";
         private string dt_ph = @"(<date)(:)(.+?)(:)([\-0-9]+)(>)";
+        private string rp_ph = @"(.+)(<rep)(:)([0-9]+)(>)";
 
 
         //日付文字列タグをデコード
@@ -43,6 +44,24 @@ namespace WRDxAddin
             return str;
         }
 
+        //繰り返し文字列タグをデコード
+        private string decode_repeat_tag(string str)
+        {
+            string ret = "";
+            Regex pt = new Regex(rp_ph, RegexOptions.Compiled);
+            if (!pt.IsMatch(str))
+                return str;
+            Match mt = pt.Match(str);
+            string tar = mt.Groups[1].Value;
+            string cn = mt.Groups[4].Value;
+            int ncn = Int32.Parse(cn);
+            for(int i=1; i<=ncn; i++)
+            {
+                ret += tar;
+            }
+            return ret;
+        }
+
         //コンボで選択した文字列を挿入する
         private void write_comment()
         {
@@ -50,6 +69,7 @@ namespace WRDxAddin
             string src = writeCommentCombo.Text;
             src = src.Replace(br_sp, "\r\n");
             src = decode_date_tag(src);
+            src = decode_repeat_tag(src);
             sa.TypeText(src);
         }
 
