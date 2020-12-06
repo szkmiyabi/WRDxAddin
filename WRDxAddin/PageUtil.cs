@@ -56,6 +56,20 @@ namespace WRDxAddin
             doc.SaveAs2(ref filename, ref format);
         }
 
+        //縦横反転
+        private void page_rotate()
+        {
+            var doc = getDoc();
+            if(doc.PageSetup.Orientation == Word.WdOrientation.wdOrientLandscape)
+            {
+                doc.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
+            }
+            else
+            {
+                doc.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape;
+            }
+        }
+
 
     }
 }

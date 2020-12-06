@@ -197,7 +197,7 @@ namespace WRDxAddin
         //記号で前後を挟む
         private string mark_ham(string mark, string body)
         {
-            Regex pt = new Regex(@"(\[|【|「|『|""|\')( )(\]|】|」|』|""|\')", RegexOptions.Compiled);
+            Regex pt = new Regex(@"(\[|【|「|『|""|\'|\(|（|<|＜)( )(\]|】|」|』|""|\'|\)|）|>|＞)", RegexOptions.Compiled);
             if (!pt.IsMatch(mark))
                 return body;
             Match mt = pt.Match(mark);
@@ -348,5 +348,193 @@ namespace WRDxAddin
             rectCallout.Line.Weight = 1.5F;
             rectCallout.Select();
         }
+
+        //図形矢印を挿入
+        private void insert_arrow()
+        {
+            var doc = getDoc();
+            float[] size = { 200, 75 };
+            var arrow = doc.Shapes.AddShape(33, 90, 90, size[0], size[1]);
+            arrow.Fill.ForeColor.RGB = getWordRGB(255, 153, 0);
+            arrow.Line.Visible = MsoTriState.msoFalse;
+            arrow.Shadow.Visible = MsoTriState.msoTrue;
+            arrow.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
+            arrow.Shadow.OffsetX = 1;
+            arrow.Shadow.OffsetY = 1;
+            arrow.Shadow.Transparency = 0.5F;
+        }
+
+        //線矢印を挿入
+        private void insert_line_arrow()
+        {
+            var doc = getDoc();
+            float[] matrix = { 85, 85 };
+            var arrow = doc.Shapes.AddLine(matrix[0], matrix[1], matrix[0] + 60, matrix[1] + 10);
+            arrow.Line.EndArrowheadStyle = MsoArrowheadStyle.msoArrowheadOpen;
+            arrow.Line.EndArrowheadLength = MsoArrowheadLength.msoArrowheadLong;
+            arrow.Line.EndArrowheadWidth = MsoArrowheadWidth.msoArrowheadWide;
+            arrow.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
+            arrow.Line.Weight = 2.5F;
+            arrow.Shadow.Visible = MsoTriState.msoTrue;
+            arrow.Shadow.Visible = MsoTriState.msoTrue;
+            arrow.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
+            arrow.Shadow.OffsetX = 1;
+            arrow.Shadow.OffsetY = 1;
+            arrow.Shadow.Transparency = 0.5F;
+        }
+
+        //図形の書式無効化
+        private void reset_shape_style()
+        {
+            var sa = getSelection();
+            var sps = sa.ShapeRange;
+            for (int i = 1; i <= sps.Count; i++)
+            {
+                var sp = sps[i];
+                sp.Fill.Visible = MsoTriState.msoFalse;
+                sp.Line.Visible = MsoTriState.msoFalse;
+                //sp.TextFrame.TextRange.Font.Bold = MsoTriState.msoFalse;
+            }
+        }
+
+        //横反転
+        private void horizontal_flip()
+        {
+            var sa = getSelection();
+            var sps = sa.ShapeRange;
+            for (int i = 1; i <= sps.Count; i++)
+            {
+                var sp = sps[i];
+                sp.Flip(MsoFlipCmd.msoFlipHorizontal);
+            }
+        }
+
+        //縦反転
+        private void vertical_flip()
+        {
+            var sa = getSelection();
+            var sps = sa.ShapeRange;
+            for (int i = 1; i <= sps.Count; i++)
+            {
+                var sp = sps[i];
+                sp.Flip(MsoFlipCmd.msoFlipVertical);
+            }
+        }
+
+        //文書内の全オブジェクトを選択
+        private void select_object()
+        {
+            try
+            {
+                var doc = getDoc();
+                var shapes = doc.Shapes;
+                var sa = getSelection();
+                int cnt = 0;
+                for (int i = 1; i <= shapes.Count; i++)
+                {
+                    var sp = shapes[i];
+                    if (sp.Type != MsoShapeType.msoPlaceholder && sp.Type != MsoShapeType.msoTable)
+                    {
+                        if (cnt == 0) sp.Select(MsoTriState.msoTrue);
+                        else sp.Select(MsoTriState.msoFalse);
+                        cnt++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("実行エラー：" + ex.Message);
+            }
+        }
+
+        //前面に配置
+        private void position_front()
+        {
+            var sa = getSelection();
+            var sps = sa.InlineShapes;
+            for (int i = 1; i <= sps.Count; i++)
+            {
+                var sp = sps[i];
+                var spc = sp.ConvertToShape();
+                spc.WrapFormat.Type = WdWrapType.wdWrapFront;
+            }
+        }
+
+        //最前面に移動
+        private void bring_front()
+        {
+            var sa = getSelection();
+            var sps = sa.ShapeRange;
+            for (int i = 1; i <= sps.Count; i++)
+            {
+                var sp = sps[i];
+                sp.ZOrder(MsoZOrderCmd.msoBringToFront);
+            }
+        }
+
+        //テキストのみコピー
+        private void text_copy()
+        {
+            try
+            {
+                var sa = getSelection();
+                sa.Copy();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("この機能はテキストのみです。テキストを選択してください。");
+            }
+
+        }
+
+        //テキストのみ貼り付け
+        private void text_paste()
+        {
+            try
+            {
+                var sa = getSelection();
+                sa.PasteSpecial(DataType: WdPasteDataType.wdPasteText);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("この機能はテキストのみです。テキストを選択して再度試してください。");
+            }
+        }
+
+        //赤字
+        private void paint_text_red()
+        {
+            var sa = getSelection();
+            sa.Font.Color = WdColor.wdColorRed;
+        }
+
+        //青字
+        private void paint_text_blue()
+        {
+            var sa = getSelection();
+            sa.Font.Color = WdColor.wdColorBlue;
+        }
+
+        //黒字
+        private void paint_text_black()
+        {
+            var sa = getSelection();
+            sa.Font.Color = WdColor.wdColorBlack;
+        }
+
+        //太字
+        private void bold_text()
+        {
+            var sa = getSelection();
+            sa.Font.Bold = 1;
+        }
+
+        //細字
+        private void narrow_text()
+        {
+            var sa = getSelection();
+            sa.Font.Bold = 0;
+        }
+
     }
 }

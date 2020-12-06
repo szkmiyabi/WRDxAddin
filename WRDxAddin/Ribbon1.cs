@@ -181,5 +181,95 @@ namespace WRDxAddin
         {
             insert_callout();
         }
+
+        //図矢印
+        private void insertArrowButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_arrow();
+        }
+
+        //線矢印
+        private void insertLineArrowButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_line_arrow();
+        }
+
+        //書式なし
+        private void resetShapeStyleButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            reset_shape_style();
+        }
+
+        //横反転
+        private void flipHorizontalButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            horizontal_flip();
+        }
+
+        //縦反転
+        private void flipVerticalButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            vertical_flip();
+        }
+
+        //自由配置
+        private void positionFrontButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            position_front();
+        }
+
+        //最前面
+        private void bringFrontButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            bring_front();
+        }
+
+        //用紙縦横回転
+        private void pageRotateButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            page_rotate();
+        }
+
+        //テキストのみコピー
+        private void textCopyButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            text_copy();
+        }
+
+        //テキストのみ貼り付け
+        private void textPasteButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            text_paste();
+        }
+
+        //太字
+        private void fontBoldButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            bold_text();
+        }
+
+        //細字
+        private void fontNarrowButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            narrow_text();
+        }
+
+        //赤字
+        private void fontRedButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            paint_text_red();
+        }
+
+        //青字
+        private void fontBlueButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            paint_text_blue();
+        }
+
+        //黒字
+        private void fontBlackButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            paint_text_black();
+        }
     }
 }
