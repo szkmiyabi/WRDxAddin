@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="WRDxAddinSetup" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="9f961768-e272-4b95-bf33-a7334c549fb3">
+	<Product Id="*" Name="WRDxAddin" Language="1033" Version="0.0.0.1" Manufacturer="JCI" UpgradeCode="DD97D12C-6161-4504-96C7-CC3B27FD4436">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -8,13 +8,43 @@
 
 		<Feature Id="ProductFeature" Title="WRDxAddinSetup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="Registry_FriendlyName" />
+      <ComponentRef Id="Registry_Description" />
+      <ComponentRef Id="Registry_Manifest" />
+      <ComponentRef Id="Registry_LoadBehavior" />
 		</Feature>
 	</Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="WRDxAddinSetup" />
+				<Directory Id="INSTALLFOLDER" Name="WRDxAddin" />
+        <Component Id="Registry_FriendlyName">
+          <RegistryValue Id="RegKey_FriendlyName" Root="HKCU"
+                         Key="Software\Microsoft\Office\Word\AddIns\WRDxAddin"
+                         Name="FriendlyName"
+                         Value="My Word Add-In"
+                         Type="string" KeyPath="yes" />
+        </Component>
+        <Component Id="Registry_Description">
+          <RegistryValue Id="RegKey_Description" Root="HKCU"
+                         Key="Software\Microsoft\Office\Word\AddIns\WRDxAddin"
+                         Name="Description"
+                         Value="My very cool Word Add-In"
+                         Type="string" KeyPath="yes" />
+        </Component>
+        <Component Id="Registry_Manifest">
+          <RegistryValue Id="RegKey_Manifest" Root="HKCU"
+                         Key="Software\Microsoft\Office\Word\AddIns\WRDxAddin"
+                         Name="Manifest" Value="[INSTALLFOLDER]WRDxAddin.vsto|vstolocal"
+                         Type="string" KeyPath="yes" />
+        </Component>
+        <Component Id="Registry_LoadBehavior">
+          <RegistryValue Id="RegKey_LoadBehavior" Root="HKCU"
+                         Key="Software\Microsoft\Office\Word\AddIns\WRDxAddin"
+                         Name="LoadBehavior" Value="3"
+                         Type="integer" KeyPath="yes" />
+        </Component>
 			</Directory>
 		</Directory>
 	</Fragment>
@@ -25,6 +55,23 @@
 			<!-- <Component Id="ProductComponent"> -->
 				<!-- TODO: Insert files, registry keys, and other resources here. -->
 			<!-- </Component> -->
+      <Component Id="WRDxAddin_vsto_Component">
+        <File Id="WRDxAddin_vsto" KeyPath="yes"
+              Name="WRDxAddin.vsto" Source="$(var.AddinFiles)"></File>
+      </Component>
+      <Component Id="WRDxAddin_dll_manifest_Component">
+        <File Id="WRDxAddin_dll_manifest" KeyPath="yes"
+              Name="WRDxAddin.dll.manifest" Source="$(var.AddinFiles)"></File>
+      </Component>
+      <Component Id="MSOfficeToolsCommon_dll_Component">
+        <File Id="MSOfficeToolsCommon_dll" KeyPath="yes"
+              Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+              Source="$(var.AddinFiles)"></File>
+      </Component>
+      <Component Id="WRDxxAddin_dll_Component" >
+        <File Id="WRDxAddin_dll" KeyPath="yes"
+              Name="WRDxAddin.dll" Source="$(var.AddinFiles)" />
+      </Component>
 		</ComponentGroup>
 	</Fragment>
 </Wix>
