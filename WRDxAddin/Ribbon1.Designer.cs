@@ -68,49 +68,49 @@
             this.delCommentAllButton = this.Factory.CreateRibbonButton();
             this.doEditComboButton = this.Factory.CreateRibbonButton();
             this.writeCommentComboSaveButton = this.Factory.CreateRibbonButton();
+            this.textCopyButton = this.Factory.CreateRibbonButton();
+            this.textPasteButton = this.Factory.CreateRibbonButton();
             this.box6 = this.Factory.CreateRibbonBox();
             this.writeMarkCombo = this.Factory.CreateRibbonComboBox();
             this.writeMarkInputButton = this.Factory.CreateRibbonButton();
             this.writeMarkHamCheck = this.Factory.CreateRibbonCheckBox();
-            this.box8 = this.Factory.CreateRibbonBox();
             this.divideBy10Button = this.Factory.CreateRibbonButton();
+            this.box8 = this.Factory.CreateRibbonBox();
             this.writeEnterButton = this.Factory.CreateRibbonButton();
             this.textDuplicateButton = this.Factory.CreateRibbonButton();
             this.insertPageBreakButton = this.Factory.CreateRibbonButton();
             this.box4 = this.Factory.CreateRibbonBox();
-            this.insertOpacityTextBoxButton = this.Factory.CreateRibbonButton();
+            this.fontRedButton = this.Factory.CreateRibbonButton();
+            this.fontBlueButton = this.Factory.CreateRibbonButton();
+            this.fontBlackButton = this.Factory.CreateRibbonButton();
+            this.fontBoldButton = this.Factory.CreateRibbonButton();
+            this.fontNarrowButton = this.Factory.CreateRibbonButton();
+            this.group3 = this.Factory.CreateRibbonGroup();
+            this.box9 = this.Factory.CreateRibbonBox();
             this.insertNoFillRoundedRectButton = this.Factory.CreateRibbonButton();
+            this.insertLineArrowButton = this.Factory.CreateRibbonButton();
+            this.insertArrowButton = this.Factory.CreateRibbonButton();
             this.insertRectangleCalloutButton = this.Factory.CreateRibbonButton();
+            this.insertOpacityTextBoxButton = this.Factory.CreateRibbonButton();
+            this.box10 = this.Factory.CreateRibbonBox();
+            this.resetShapeStyleButton = this.Factory.CreateRibbonButton();
+            this.bringFrontButton = this.Factory.CreateRibbonButton();
+            this.positionFrontButton = this.Factory.CreateRibbonButton();
+            this.flipHorizontalButton = this.Factory.CreateRibbonButton();
+            this.flipVerticalButton = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.box5 = this.Factory.CreateRibbonBox();
             this.paddingCombo = this.Factory.CreateRibbonComboBox();
-            this.paddingButton = this.Factory.CreateRibbonButton();
             this.paddingTypeSplitButton = this.Factory.CreateRibbonSplitButton();
             this.paddingTypeTop = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeBottom = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeLeft = this.Factory.CreateRibbonToggleButton();
             this.paddingTypeRight = this.Factory.CreateRibbonToggleButton();
+            this.paddingButton = this.Factory.CreateRibbonButton();
             this.box7 = this.Factory.CreateRibbonBox();
             this.saveAsDesktopButton = this.Factory.CreateRibbonButton();
             this.saveAsPDFButton = this.Factory.CreateRibbonButton();
-            this.group3 = this.Factory.CreateRibbonGroup();
-            this.box9 = this.Factory.CreateRibbonBox();
-            this.insertArrowButton = this.Factory.CreateRibbonButton();
-            this.insertLineArrowButton = this.Factory.CreateRibbonButton();
-            this.box10 = this.Factory.CreateRibbonBox();
-            this.resetShapeStyleButton = this.Factory.CreateRibbonButton();
-            this.flipHorizontalButton = this.Factory.CreateRibbonButton();
-            this.flipVerticalButton = this.Factory.CreateRibbonButton();
-            this.positionFrontButton = this.Factory.CreateRibbonButton();
-            this.bringFrontButton = this.Factory.CreateRibbonButton();
             this.pageRotateButton = this.Factory.CreateRibbonButton();
-            this.textCopyButton = this.Factory.CreateRibbonButton();
-            this.textPasteButton = this.Factory.CreateRibbonButton();
-            this.fontBoldButton = this.Factory.CreateRibbonButton();
-            this.fontNarrowButton = this.Factory.CreateRibbonButton();
-            this.fontRedButton = this.Factory.CreateRibbonButton();
-            this.fontBlueButton = this.Factory.CreateRibbonButton();
-            this.fontBlackButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.box1.SuspendLayout();
@@ -119,12 +119,12 @@
             this.box6.SuspendLayout();
             this.box8.SuspendLayout();
             this.box4.SuspendLayout();
-            this.group2.SuspendLayout();
-            this.box5.SuspendLayout();
-            this.box7.SuspendLayout();
             this.group3.SuspendLayout();
             this.box9.SuspendLayout();
             this.box10.SuspendLayout();
+            this.group2.SuspendLayout();
+            this.box5.SuspendLayout();
+            this.box7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -252,6 +252,24 @@
             this.writeCommentComboSaveButton.ShowImage = true;
             this.writeCommentComboSaveButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.writeCommentComboSaveButton_Click);
             // 
+            // textCopyButton
+            // 
+            this.textCopyButton.Label = "文字コピー";
+            this.textCopyButton.Name = "textCopyButton";
+            this.textCopyButton.OfficeImageId = "ContactCardCopy";
+            this.textCopyButton.ShowImage = true;
+            this.textCopyButton.ShowLabel = false;
+            this.textCopyButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textCopyButton_Click);
+            // 
+            // textPasteButton
+            // 
+            this.textPasteButton.Label = "文字貼付";
+            this.textPasteButton.Name = "textPasteButton";
+            this.textPasteButton.OfficeImageId = "ContactCardPaste";
+            this.textPasteButton.ShowImage = true;
+            this.textPasteButton.ShowLabel = false;
+            this.textPasteButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textPasteButton_Click);
+            // 
             // box6
             // 
             this.box6.Items.Add(this.writeMarkCombo);
@@ -320,13 +338,6 @@
             this.writeMarkHamCheck.Label = "はさみこみ";
             this.writeMarkHamCheck.Name = "writeMarkHamCheck";
             // 
-            // box8
-            // 
-            this.box8.Items.Add(this.writeEnterButton);
-            this.box8.Items.Add(this.textDuplicateButton);
-            this.box8.Items.Add(this.insertPageBreakButton);
-            this.box8.Name = "box8";
-            // 
             // divideBy10Button
             // 
             this.divideBy10Button.Label = "10%";
@@ -334,6 +345,13 @@
             this.divideBy10Button.OfficeImageId = "DataTypeCurrencyBasic";
             this.divideBy10Button.ShowImage = true;
             this.divideBy10Button.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.divideBy10Button_Click);
+            // 
+            // box8
+            // 
+            this.box8.Items.Add(this.writeEnterButton);
+            this.box8.Items.Add(this.textDuplicateButton);
+            this.box8.Items.Add(this.insertPageBreakButton);
+            this.box8.Name = "box8";
             // 
             // writeEnterButton
             // 
@@ -368,21 +386,75 @@
             this.box4.Items.Add(this.fontNarrowButton);
             this.box4.Name = "box4";
             // 
-            // insertOpacityTextBoxButton
+            // fontRedButton
             // 
-            this.insertOpacityTextBoxButton.Label = "透明枠";
-            this.insertOpacityTextBoxButton.Name = "insertOpacityTextBoxButton";
-            this.insertOpacityTextBoxButton.OfficeImageId = "DrawTextBox";
-            this.insertOpacityTextBoxButton.ShowImage = true;
-            this.insertOpacityTextBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertOpacityTextBoxButton_Click);
+            this.fontRedButton.Label = "赤";
+            this.fontRedButton.Name = "fontRedButton";
+            this.fontRedButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontRedButton_Click);
+            // 
+            // fontBlueButton
+            // 
+            this.fontBlueButton.Label = "青";
+            this.fontBlueButton.Name = "fontBlueButton";
+            this.fontBlueButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBlueButton_Click);
+            // 
+            // fontBlackButton
+            // 
+            this.fontBlackButton.Label = "黒";
+            this.fontBlackButton.Name = "fontBlackButton";
+            this.fontBlackButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBlackButton_Click);
+            // 
+            // fontBoldButton
+            // 
+            this.fontBoldButton.Label = "太字";
+            this.fontBoldButton.Name = "fontBoldButton";
+            this.fontBoldButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBoldButton_Click);
+            // 
+            // fontNarrowButton
+            // 
+            this.fontNarrowButton.Label = "細字";
+            this.fontNarrowButton.Name = "fontNarrowButton";
+            this.fontNarrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontNarrowButton_Click);
+            // 
+            // group3
+            // 
+            this.group3.Items.Add(this.box9);
+            this.group3.Items.Add(this.box10);
+            this.group3.Label = "図形処理";
+            this.group3.Name = "group3";
+            // 
+            // box9
+            // 
+            this.box9.Items.Add(this.insertNoFillRoundedRectButton);
+            this.box9.Items.Add(this.insertLineArrowButton);
+            this.box9.Items.Add(this.insertArrowButton);
+            this.box9.Items.Add(this.insertRectangleCalloutButton);
+            this.box9.Items.Add(this.insertOpacityTextBoxButton);
+            this.box9.Name = "box9";
             // 
             // insertNoFillRoundedRectButton
             // 
             this.insertNoFillRoundedRectButton.Label = "赤枠";
             this.insertNoFillRoundedRectButton.Name = "insertNoFillRoundedRectButton";
-            this.insertNoFillRoundedRectButton.OfficeImageId = "MsoInkStyle5";
+            this.insertNoFillRoundedRectButton.OfficeImageId = "InkFeltTipPen";
             this.insertNoFillRoundedRectButton.ShowImage = true;
             this.insertNoFillRoundedRectButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertNoFillRoundedRectButton_Click);
+            // 
+            // insertLineArrowButton
+            // 
+            this.insertLineArrowButton.Label = "矢印";
+            this.insertLineArrowButton.Name = "insertLineArrowButton";
+            this.insertLineArrowButton.OfficeImageId = "Arrow";
+            this.insertLineArrowButton.ShowImage = true;
+            this.insertLineArrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertLineArrowButton_Click);
+            // 
+            // insertArrowButton
+            // 
+            this.insertArrowButton.Label = "図矢印";
+            this.insertArrowButton.Name = "insertArrowButton";
+            this.insertArrowButton.OfficeImageId = "MultipleSelect";
+            this.insertArrowButton.ShowImage = true;
+            this.insertArrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertArrowButton_Click);
             // 
             // insertRectangleCalloutButton
             // 
@@ -391,6 +463,63 @@
             this.insertRectangleCalloutButton.OfficeImageId = "Callout";
             this.insertRectangleCalloutButton.ShowImage = true;
             this.insertRectangleCalloutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertRectangleCalloutButton_Click);
+            // 
+            // insertOpacityTextBoxButton
+            // 
+            this.insertOpacityTextBoxButton.Label = "透明枠";
+            this.insertOpacityTextBoxButton.Name = "insertOpacityTextBoxButton";
+            this.insertOpacityTextBoxButton.OfficeImageId = "DrawTextBox";
+            this.insertOpacityTextBoxButton.ShowImage = true;
+            this.insertOpacityTextBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertOpacityTextBoxButton_Click);
+            // 
+            // box10
+            // 
+            this.box10.Items.Add(this.resetShapeStyleButton);
+            this.box10.Items.Add(this.bringFrontButton);
+            this.box10.Items.Add(this.positionFrontButton);
+            this.box10.Items.Add(this.flipHorizontalButton);
+            this.box10.Items.Add(this.flipVerticalButton);
+            this.box10.Name = "box10";
+            // 
+            // resetShapeStyleButton
+            // 
+            this.resetShapeStyleButton.Label = "書式無";
+            this.resetShapeStyleButton.Name = "resetShapeStyleButton";
+            this.resetShapeStyleButton.OfficeImageId = "Clear";
+            this.resetShapeStyleButton.ShowImage = true;
+            this.resetShapeStyleButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.resetShapeStyleButton_Click);
+            // 
+            // bringFrontButton
+            // 
+            this.bringFrontButton.Label = "最前面";
+            this.bringFrontButton.Name = "bringFrontButton";
+            this.bringFrontButton.OfficeImageId = "CircularReferences";
+            this.bringFrontButton.ShowImage = true;
+            this.bringFrontButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.bringFrontButton_Click);
+            // 
+            // positionFrontButton
+            // 
+            this.positionFrontButton.Label = "自由配置";
+            this.positionFrontButton.Name = "positionFrontButton";
+            this.positionFrontButton.OfficeImageId = "EmptyPictureInsert";
+            this.positionFrontButton.ShowImage = true;
+            this.positionFrontButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.positionFrontButton_Click);
+            // 
+            // flipHorizontalButton
+            // 
+            this.flipHorizontalButton.Label = "横反転";
+            this.flipHorizontalButton.Name = "flipHorizontalButton";
+            this.flipHorizontalButton.OfficeImageId = "ReviewCompareTwoVersions";
+            this.flipHorizontalButton.ShowImage = true;
+            this.flipHorizontalButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.flipHorizontalButton_Click);
+            // 
+            // flipVerticalButton
+            // 
+            this.flipVerticalButton.Label = "縦反転";
+            this.flipVerticalButton.Name = "flipVerticalButton";
+            this.flipVerticalButton.OfficeImageId = "RowHeight";
+            this.flipVerticalButton.ShowImage = true;
+            this.flipVerticalButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.flipVerticalButton_Click);
             // 
             // group2
             // 
@@ -413,14 +542,6 @@
             this.paddingCombo.ShowLabel = false;
             this.paddingCombo.SizeString = "AAA";
             this.paddingCombo.Text = null;
-            // 
-            // paddingButton
-            // 
-            this.paddingButton.Label = "余白";
-            this.paddingButton.Name = "paddingButton";
-            this.paddingButton.OfficeImageId = "AutoSizePage";
-            this.paddingButton.ShowImage = true;
-            this.paddingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.paddingButton_Click);
             // 
             // paddingTypeSplitButton
             // 
@@ -461,6 +582,14 @@
             this.paddingTypeRight.Name = "paddingTypeRight";
             this.paddingTypeRight.ShowImage = true;
             // 
+            // paddingButton
+            // 
+            this.paddingButton.Label = "余白";
+            this.paddingButton.Name = "paddingButton";
+            this.paddingButton.OfficeImageId = "AutoSizePage";
+            this.paddingButton.ShowImage = true;
+            this.paddingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.paddingButton_Click);
+            // 
             // box7
             // 
             this.box7.Items.Add(this.saveAsDesktopButton);
@@ -484,87 +613,6 @@
             this.saveAsPDFButton.ShowImage = true;
             this.saveAsPDFButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveAsPDFButton_Click);
             // 
-            // group3
-            // 
-            this.group3.Items.Add(this.box9);
-            this.group3.Items.Add(this.box10);
-            this.group3.Label = "図形処理";
-            this.group3.Name = "group3";
-            // 
-            // box9
-            // 
-            this.box9.Items.Add(this.insertNoFillRoundedRectButton);
-            this.box9.Items.Add(this.insertLineArrowButton);
-            this.box9.Items.Add(this.insertArrowButton);
-            this.box9.Items.Add(this.insertRectangleCalloutButton);
-            this.box9.Items.Add(this.insertOpacityTextBoxButton);
-            this.box9.Name = "box9";
-            // 
-            // insertArrowButton
-            // 
-            this.insertArrowButton.Label = "図矢印";
-            this.insertArrowButton.Name = "insertArrowButton";
-            this.insertArrowButton.OfficeImageId = "MarginsAdjust";
-            this.insertArrowButton.ShowImage = true;
-            this.insertArrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertArrowButton_Click);
-            // 
-            // insertLineArrowButton
-            // 
-            this.insertLineArrowButton.Label = "矢印";
-            this.insertLineArrowButton.Name = "insertLineArrowButton";
-            this.insertLineArrowButton.OfficeImageId = "Arrow";
-            this.insertLineArrowButton.ShowImage = true;
-            this.insertLineArrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertLineArrowButton_Click);
-            // 
-            // box10
-            // 
-            this.box10.Items.Add(this.resetShapeStyleButton);
-            this.box10.Items.Add(this.bringFrontButton);
-            this.box10.Items.Add(this.positionFrontButton);
-            this.box10.Items.Add(this.flipHorizontalButton);
-            this.box10.Items.Add(this.flipVerticalButton);
-            this.box10.Name = "box10";
-            // 
-            // resetShapeStyleButton
-            // 
-            this.resetShapeStyleButton.Label = "書式無";
-            this.resetShapeStyleButton.Name = "resetShapeStyleButton";
-            this.resetShapeStyleButton.OfficeImageId = "Clear";
-            this.resetShapeStyleButton.ShowImage = true;
-            this.resetShapeStyleButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.resetShapeStyleButton_Click);
-            // 
-            // flipHorizontalButton
-            // 
-            this.flipHorizontalButton.Label = "横反転";
-            this.flipHorizontalButton.Name = "flipHorizontalButton";
-            this.flipHorizontalButton.OfficeImageId = "ReviewCompareTwoVersions";
-            this.flipHorizontalButton.ShowImage = true;
-            this.flipHorizontalButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.flipHorizontalButton_Click);
-            // 
-            // flipVerticalButton
-            // 
-            this.flipVerticalButton.Label = "縦反転";
-            this.flipVerticalButton.Name = "flipVerticalButton";
-            this.flipVerticalButton.OfficeImageId = "RowHeight";
-            this.flipVerticalButton.ShowImage = true;
-            this.flipVerticalButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.flipVerticalButton_Click);
-            // 
-            // positionFrontButton
-            // 
-            this.positionFrontButton.Label = "自由配置";
-            this.positionFrontButton.Name = "positionFrontButton";
-            this.positionFrontButton.OfficeImageId = "EmptyPictureInsert";
-            this.positionFrontButton.ShowImage = true;
-            this.positionFrontButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.positionFrontButton_Click);
-            // 
-            // bringFrontButton
-            // 
-            this.bringFrontButton.Label = "最前面";
-            this.bringFrontButton.Name = "bringFrontButton";
-            this.bringFrontButton.OfficeImageId = "CircularReferences";
-            this.bringFrontButton.ShowImage = true;
-            this.bringFrontButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.bringFrontButton_Click);
-            // 
             // pageRotateButton
             // 
             this.pageRotateButton.Label = "回転";
@@ -572,54 +620,6 @@
             this.pageRotateButton.OfficeImageId = "DrawConvertInkToGeometry";
             this.pageRotateButton.ShowImage = true;
             this.pageRotateButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.pageRotateButton_Click);
-            // 
-            // textCopyButton
-            // 
-            this.textCopyButton.Label = "文字コピー";
-            this.textCopyButton.Name = "textCopyButton";
-            this.textCopyButton.OfficeImageId = "ContactCardCopy";
-            this.textCopyButton.ShowImage = true;
-            this.textCopyButton.ShowLabel = false;
-            this.textCopyButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textCopyButton_Click);
-            // 
-            // textPasteButton
-            // 
-            this.textPasteButton.Label = "文字貼付";
-            this.textPasteButton.Name = "textPasteButton";
-            this.textPasteButton.OfficeImageId = "ContactCardPaste";
-            this.textPasteButton.ShowImage = true;
-            this.textPasteButton.ShowLabel = false;
-            this.textPasteButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.textPasteButton_Click);
-            // 
-            // fontBoldButton
-            // 
-            this.fontBoldButton.Label = "太字";
-            this.fontBoldButton.Name = "fontBoldButton";
-            this.fontBoldButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBoldButton_Click);
-            // 
-            // fontNarrowButton
-            // 
-            this.fontNarrowButton.Label = "細字";
-            this.fontNarrowButton.Name = "fontNarrowButton";
-            this.fontNarrowButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontNarrowButton_Click);
-            // 
-            // fontRedButton
-            // 
-            this.fontRedButton.Label = "赤";
-            this.fontRedButton.Name = "fontRedButton";
-            this.fontRedButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontRedButton_Click);
-            // 
-            // fontBlueButton
-            // 
-            this.fontBlueButton.Label = "青";
-            this.fontBlueButton.Name = "fontBlueButton";
-            this.fontBlueButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBlueButton_Click);
-            // 
-            // fontBlackButton
-            // 
-            this.fontBlackButton.Label = "黒";
-            this.fontBlackButton.Name = "fontBlackButton";
-            this.fontBlackButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.fontBlackButton_Click);
             // 
             // Ribbon1
             // 
@@ -643,18 +643,18 @@
             this.box8.PerformLayout();
             this.box4.ResumeLayout(false);
             this.box4.PerformLayout();
-            this.group2.ResumeLayout(false);
-            this.group2.PerformLayout();
-            this.box5.ResumeLayout(false);
-            this.box5.PerformLayout();
-            this.box7.ResumeLayout(false);
-            this.box7.PerformLayout();
             this.group3.ResumeLayout(false);
             this.group3.PerformLayout();
             this.box9.ResumeLayout(false);
             this.box9.PerformLayout();
             this.box10.ResumeLayout(false);
             this.box10.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
+            this.box5.ResumeLayout(false);
+            this.box5.PerformLayout();
+            this.box7.ResumeLayout(false);
+            this.box7.PerformLayout();
             this.ResumeLayout(false);
 
         }
