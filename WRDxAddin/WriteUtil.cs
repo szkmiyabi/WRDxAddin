@@ -299,8 +299,9 @@ namespace WRDxAddin
             var textBox = doc.Shapes.AddTextbox(MsoTextOrientation.msoTextOrientationHorizontal, getCursorLeft(), getCursorTop(), size[0], size[1]);
             textBox.Fill.Visible = MsoTriState.msoFalse;
             textBox.Line.Visible = MsoTriState.msoFalse;
-            textBox.TextFrame.TextRange.Font.Size = 9;
-            textBox.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
+            //textBox.TextFrame.TextRange.Font.Size = 9;
+            //textBox.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
+            textBox.TextFrame.TextRange.Text = "説明を入力";
             textBox.Select();
         }
 
@@ -324,7 +325,7 @@ namespace WRDxAddin
             textBox.Fill.Visible = MsoTriState.msoFalse;
             textBox.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
             textBox.Line.Transparency = 0.2F;
-            textBox.Line.Weight = 3;
+            textBox.Line.Weight = 2.25F;
             // shadow設定
             textBox.Shadow.Visible = MsoTriState.msoTrue;
             textBox.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
@@ -342,11 +343,27 @@ namespace WRDxAddin
             var rectCallout = doc.Shapes.AddShape(105, getCursorLeft(), getCursorTop(), size[0], size[1]);
             rectCallout.Fill.ForeColor.RGB = getWordRGB(255, 255, 255);
             rectCallout.TextFrame.TextRange.Font.ColorIndex = WdColorIndex.wdBlack;
-            rectCallout.TextFrame.TextRange.Font.Size = 9;
+            rectCallout.TextFrame.TextRange.Font.Size = 7;
             rectCallout.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
             rectCallout.Line.ForeColor.RGB = getWordRGB(255, 192, 0);
             rectCallout.Line.Weight = 1.5F;
             rectCallout.Select();
+        }
+
+        //文字枠を挿入
+        private void insert_bordered_rect()
+        {
+            var doc = getDoc();
+            float[] size = { 100, 80 };
+            var textBox = doc.Shapes.AddTextbox(MsoTextOrientation.msoTextOrientationHorizontal, getCursorLeft(), getCursorTop(), size[0], size[1]);
+            textBox.Fill.Visible = MsoTriState.msoFalse;
+            textBox.Line.ForeColor.RGB = getWordRGB(166, 166, 166);
+            textBox.TextFrame.TextRange.Font.ColorIndex = WdColorIndex.wdBlack;
+            textBox.TextFrame.TextRange.Font.Size = 7;
+            textBox.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
+            textBox.Line.Weight = 1.5F;
+            textBox.Fill.ForeColor.RGB = getWordRGB(255, 255, 255);
+            textBox.Select();
         }
 
         //図形矢印を挿入
@@ -535,6 +552,7 @@ namespace WRDxAddin
             var sa = getSelection();
             sa.Font.Bold = 0;
         }
+
 
     }
 }

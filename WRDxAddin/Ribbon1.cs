@@ -271,5 +271,11 @@ namespace WRDxAddin
         {
             paint_text_black();
         }
+
+        private void insertTextBoxButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            insert_bordered_rect();
+        }
+
     }
 }

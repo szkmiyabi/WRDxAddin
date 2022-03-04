@@ -91,6 +91,7 @@
             this.insertLineArrowButton = this.Factory.CreateRibbonButton();
             this.insertArrowButton = this.Factory.CreateRibbonButton();
             this.insertRectangleCalloutButton = this.Factory.CreateRibbonButton();
+            this.insertTextBoxButton = this.Factory.CreateRibbonButton();
             this.insertOpacityTextBoxButton = this.Factory.CreateRibbonButton();
             this.box10 = this.Factory.CreateRibbonBox();
             this.resetShapeStyleButton = this.Factory.CreateRibbonButton();
@@ -429,6 +430,7 @@
             this.box9.Items.Add(this.insertLineArrowButton);
             this.box9.Items.Add(this.insertArrowButton);
             this.box9.Items.Add(this.insertRectangleCalloutButton);
+            this.box9.Items.Add(this.insertTextBoxButton);
             this.box9.Items.Add(this.insertOpacityTextBoxButton);
             this.box9.Name = "box9";
             // 
@@ -463,6 +465,14 @@
             this.insertRectangleCalloutButton.OfficeImageId = "Callout";
             this.insertRectangleCalloutButton.ShowImage = true;
             this.insertRectangleCalloutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertRectangleCalloutButton_Click);
+            // 
+            // insertTextBoxButton
+            // 
+            this.insertTextBoxButton.Label = "文字枠";
+            this.insertTextBoxButton.Name = "insertTextBoxButton";
+            this.insertTextBoxButton.OfficeImageId = "CharacterBorder";
+            this.insertTextBoxButton.ShowImage = true;
+            this.insertTextBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.insertTextBoxButton_Click);
             // 
             // insertOpacityTextBoxButton
             // 
@@ -719,6 +729,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton fontBlueButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton fontBlackButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton fontNarrowButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton insertTextBoxButton;
     }
 
     partial class ThisRibbonCollection
