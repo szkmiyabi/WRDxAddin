@@ -326,6 +326,7 @@ namespace WRDxAddin
             textBox.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
             textBox.Line.Transparency = 0.2F;
             textBox.Line.Weight = 2.25F;
+            textBox.Adjustments[1] = 0.08F;
             // shadow設定
             textBox.Shadow.Visible = MsoTriState.msoTrue;
             textBox.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
@@ -345,6 +346,7 @@ namespace WRDxAddin
             rectCallout.TextFrame.TextRange.Font.ColorIndex = WdColorIndex.wdBlack;
             rectCallout.TextFrame.TextRange.Font.Size = 7;
             rectCallout.TextFrame.TextRange.Font.Name = "ＭＳ Ｐゴシック";
+            rectCallout.TextFrame.TextRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
             rectCallout.Line.ForeColor.RGB = getWordRGB(255, 192, 0);
             rectCallout.Line.Weight = 1.5F;
             rectCallout.Select();
@@ -370,7 +372,7 @@ namespace WRDxAddin
         private void insert_arrow()
         {
             var doc = getDoc();
-            float[] size = { 200, 75 };
+            float[] size = { 100, 35 };
             var arrow = doc.Shapes.AddShape(33, 90, 90, size[0], size[1]);
             arrow.Fill.ForeColor.RGB = getWordRGB(255, 153, 0);
             arrow.Line.Visible = MsoTriState.msoFalse;
@@ -379,6 +381,7 @@ namespace WRDxAddin
             arrow.Shadow.OffsetX = 1;
             arrow.Shadow.OffsetY = 1;
             arrow.Shadow.Transparency = 0.5F;
+            arrow.Adjustments[2] = 0.7F;
         }
 
         //線矢印を挿入
@@ -386,12 +389,12 @@ namespace WRDxAddin
         {
             var doc = getDoc();
             float[] matrix = { 85, 85 };
-            var arrow = doc.Shapes.AddLine(matrix[0], matrix[1], matrix[0] + 60, matrix[1] + 10);
+            var arrow = doc.Shapes.AddLine(matrix[0], matrix[1], matrix[0] + 60, matrix[1]);
             arrow.Line.EndArrowheadStyle = MsoArrowheadStyle.msoArrowheadOpen;
             arrow.Line.EndArrowheadLength = MsoArrowheadLength.msoArrowheadLong;
             arrow.Line.EndArrowheadWidth = MsoArrowheadWidth.msoArrowheadWide;
             arrow.Line.ForeColor.RGB = getWordRGB(255, 0, 0);
-            arrow.Line.Weight = 2.5F;
+            arrow.Line.Weight = 1.5F;
             arrow.Shadow.Visible = MsoTriState.msoTrue;
             arrow.Shadow.Visible = MsoTriState.msoTrue;
             arrow.Shadow.Style = MsoShadowStyle.msoShadowStyleOuterShadow;
