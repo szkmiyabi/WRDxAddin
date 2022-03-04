@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="WRDxAddin" Language="1033" Version="0.0.0.1" Manufacturer="JCI" UpgradeCode="DD97D12C-6161-4504-96C7-CC3B27FD4436">
+	<Product Id="*" Name="WRDxAddin" Language="1033" Version="0.0.2" Manufacturer="JCI" UpgradeCode="DD97D12C-6161-4504-96C7-CC3B27FD4436">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+    <MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="ProductFeature" Title="WRDxAddinSetup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
